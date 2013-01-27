@@ -42,7 +42,7 @@ import re
 log = logging.getLogger("koRNG")
 log.setLevel(logging.DEBUG)
 
-from elementtree import XMLTreeBuilder
+from xml.etree.ElementTree import XMLTreeBuilder
 try:
     import cElementTree as ElementTree # effbot's C module
 except ImportError:
@@ -50,7 +50,7 @@ except ImportError:
     import elementtree.ElementTree as ElementTree # effbot's pure Python module
 
 
-class NamespaceParser(XMLTreeBuilder.FancyTreeBuilder):
+class NamespaceParser(XMLTreeBuilder):
     _qname = re.compile("{(.*?)}(.*)")
     def start(self, element):
         element.namespaces = self.namespaces[:]

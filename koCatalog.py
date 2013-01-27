@@ -44,7 +44,7 @@ from koRNGElementTree import rng
 log = logging.getLogger("koCatalog")
 #log.setLevel(logging.INFO)
 
-from elementtree import XMLTreeBuilder
+from xml.etree.ElementTree import XMLTreeBuilder
 try:
     import cElementTree as ElementTree # effbot's C module
 except ImportError:
@@ -195,7 +195,7 @@ class Catalog:
         # 7.1.2 #6 
         return self._getDelegates(uri, self.delegateuri)
 
-class NamespaceParser(XMLTreeBuilder.FancyTreeBuilder):
+class NamespaceParser(XMLTreeBuilder):
     _qname = re.compile("{(.*?)}(.*)")
     def start(self, element):
         element.namespaces = self.namespaces[:]
